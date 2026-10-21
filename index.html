@@ -1,105 +1,65 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#151719">
-<meta name="description" content="SARZIER — Galerie d'art originale. Peintures acryliques et à l'huile par Abdellah Sarzier.">
+<meta name="theme-color" content="#f7f4ed">
 <title>SARZIER — Galerie d'art</title>
 <style>
 :root {
-  --bg: #151719;
-  --panel: #1d2021;
-  --cream: #f0e9dc;
-  --gold: #b99a69;
-  --muted: #a9a49b;
+  --bg: #f7f4ed;
+  --panel: #ffffff;
+  --text: #2c2c2c;
+  --gold: #9c7c47;
+  --muted: #66635d;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   background: var(--bg);
-  color: var(--cream);
+  color: var(--text);
   font-family: Georgia, "Times New Roman", serif;
 }
 button { font: inherit; cursor: pointer; }
-button:focus-visible, a:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 4px;
-}
-.topbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 24px 6%;
-  border-bottom: 1px solid #343536;
-}
-.brand { letter-spacing: 7px; font-size: 22px; }
-.topnote {
-  color: var(--muted);
-  font: 10px Arial, sans-serif;
-  letter-spacing: 3px;
-}
 .screen { display: none; }
 .screen.active { display: block; }
 .welcome {
-  min-height: 82vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 55px 22px 75px;
-  background:
-    radial-gradient(ellipse at 50% 40%, #35332d 0%, #202122 40%, #151719 75%);
+  padding: 40px 20px;
 }
 .eyebrow {
   color: var(--gold);
-  font: 10px Arial, sans-serif;
+  font: 11px Arial, sans-serif;
   letter-spacing: 4px;
   text-transform: uppercase;
 }
 .welcome h1 {
-  font-size: clamp(54px, 14vw, 105px);
+  font-size: clamp(45px, 12vw, 85px);
   font-weight: normal;
-  letter-spacing: 12px;
-  margin: 28px 0 12px;
-}
-.welcome .subtitle {
-  color: var(--muted);
-  font-size: 17px;
-  font-style: italic;
-}
-.rule { width: 45px; height: 1px; background: var(--gold); margin: 30px auto; }
-.intro {
-  max-width: 390px;
-  line-height: 1.9;
-  color: #d1cbc0;
-  font-size: 15px;
+  letter-spacing: 8px;
+  margin: 20px 0 10px;
 }
 .primary {
-  margin-top: 28px;
-  padding: 16px 25px;
+  margin-top: 25px;
+  padding: 14px 24px;
   border: 1px solid var(--gold);
-  color: var(--cream);
+  color: var(--text);
   background: transparent;
   letter-spacing: 2px;
   font: 11px Arial, sans-serif;
   transition: .2s;
 }
-.primary:hover { background: var(--gold); color: #151719; }
-.signature {
-  margin-top: 48px;
-  color: #77766f;
-  font: 10px Arial, sans-serif;
-  letter-spacing: 3px;
-}
-.gallery { padding: 35px 5% 65px; }
-.gallery-head { text-align: center; margin: 15px 0 30px; }
-.gallery-head h2 { font-weight: normal; font-size: 29px; margin: 12px 0; }
-.gallery-head p { color: var(--muted); font-size: 13px; }
+.primary:hover { background: var(--gold); color: #fff; }
+.gallery { padding: 25px 5% 50px; }
+.gallery-head { text-align: center; margin-bottom: 20px; }
+.gallery-head h2 { font-weight: normal; font-size: 24px; margin: 8px 0; }
 .artwork {
-  max-width: 650px;
+  max-width: 550px;
   margin: auto;
   text-align: center;
 }
@@ -108,65 +68,46 @@ button:focus-visible, a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 330px;
   aspect-ratio: 4 / 5;
-  max-height: 72vh;
-  background: #202326;
-  border: 1px solid #44413a;
-  padding: 12px;
-  box-shadow: 0 18px 55px #0007;
-  overflow: hidden;
+  background: var(--panel);
+  border: 1px solid #dcd5c7;
+  padding: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
 }
 .art-frame img {
   width: 100%;
   height: 100%;
-  max-height: calc(72vh - 24px);
   object-fit: contain;
-  position: absolute;
-  inset: 0;
-  padding: 12px;
 }
-.art-placeholder {
-  padding: 25px;
-  color: #aaa18f;
-  line-height: 1.8;
-  font-size: 14px;
-}
-.art-placeholder strong {
-  display: block;
-  color: var(--gold);
-  font-weight: normal;
-  font-size: 25px;
-  margin-bottom: 12px;
-}
-.art-info { padding: 22px 5px 12px; }
-.art-info h3 { font-size: 27px; font-weight: normal; margin: 0 0 10px; }
-.art-info p { color: var(--muted); font-size: 13px; line-height: 1.8; }
+.art-info { padding: 15px 5px 10px; }
+.art-info h3 { font-size: 22px; font-weight: normal; margin: 0 0 6px; }
+.art-info p { color: var(--muted); font-size: 13px; margin: 4px 0; }
 .counter {
   color: var(--gold);
   font: 11px Arial, sans-serif;
-  letter-spacing: 3px;
-  margin: 22px 0;
+  letter-spacing: 2px;
+  margin: 10px 0;
 }
 .controls {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
+  margin-top: 5px;
 }
 .arrow {
-  width: 52px;
-  height: 52px;
-  border: 1px solid #575247;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--gold);
   border-radius: 50%;
   background: transparent;
-  color: var(--cream);
-  font-size: 23px;
+  color: var(--text);
+  font-size: 20px;
 }
-.arrow:hover { border-color: var(--gold); color: var(--gold); }
+.arrow:hover { background: var(--gold); color: #fff; }
 .back {
   display: block;
-  margin: 35px auto 0;
+  margin: 25px auto 0;
   border: 0;
   background: none;
   color: var(--muted);
@@ -174,170 +115,44 @@ button:focus-visible, a:focus-visible {
   letter-spacing: 2px;
 }
 footer {
-  padding: 27px 15px;
-  border-top: 1px solid #343536;
+  padding: 20px;
   text-align: center;
-  color: #8e897f;
+  color: var(--muted);
   font: 10px Arial, sans-serif;
-  letter-spacing: 2px;
-}
-@media (min-width: 700px) {
-  .gallery { padding-top: 50px; }
-  .art-frame { aspect-ratio: 4 / 5; }
 }
 </style>
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">SARZIER</div>
-  <div class="topnote">GALERIE D'ART</div>
-</header>
 
 <main>
 <section class="screen active" id="home">
   <div class="welcome">
     <div class="eyebrow">ARTISTE PEINTRE</div>
     <h1>SARZIER</h1>
-    <div class="subtitle">L'art, une fenêtre sur l'émotion.</div>
-    <div class="rule"></div>
-    <p class="intro">
-      Bienvenue dans mon univers artistique.
-      Découvrez mes peintures originales, réalisées
-      à l'acrylique et à l'huile, où la lumière,
-      les couleurs et les paysages racontent leur histoire.
-    </p>
-    <button class="primary" id="enter">DÉCOUVRIR LES ŒUVRES&nbsp; ↗</button>
-    <div class="signature">ABDALLAH SARZIER · ARTISTE</div>
+    <p style="color: var(--muted); font-style: italic;">L'art, une fenêtre sur l'émotion.</p>
+    <button class="primary" id="enter">DÉCOUVRIR LA GALERIE ↗</button>
   </div>
 </section>
 
 <section class="screen" id="gallery">
   <div class="gallery">
     <div class="gallery-head">
-      <div class="eyebrow">COLLECTION PERSONNELLE</div>
-      <h2>Galerie artistique</h2>
-      <p>Une œuvre à la fois. Prenez le temps de regarder.</p>
+      <div class="eyebrow">COLLECTION</div>
+      <h2>Mes Œuvres</h2>
     </div>
 
     <div class="artwork">
       <div class="art-frame" id="frame">
-        <div class="art-placeholder" id="placeholder">
-          <strong>SARZIER</strong>
-          Votre œuvre apparaîtra ici.<br>
-          Ajoutez vos photos au dossier <b>images</b>
-          et indiquez leur nom dans le code.
-        </div>
-        <img id="artImage" alt="" hidden>
+        <img id="artImage" alt="">
       </div>
 
       <div class="art-info">
-        <h3 id="artTitle">Espoir d'aujourd'hui</h3>
-        <p id="artMedium">Peinture acrylique</p>
-        <p id="artSize">A4 · 29,7 × 21 cm</p>
+        <h3 id="artTitle"></h3>
+        <p id="artMedium"></p>
+        <p id="artSize"></p>
       </div>
 
-      <div class="counter" id="counter">01 / 03</div>
+      <div class="counter" id="counter"></div>
 
-      <div class="controls">
-        <button class="arrow" id="prev" aria-label="Œuvre précédente">←</button>
-        <span class="eyebrow">EXPLORER</span>
-        <button class="arrow" id="next" aria-label="Œuvre suivante">→</button>
-      </div>
-      <button class="back" id="back">← RETOUR À L'ACCUEIL</button>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>© <span id="year"></span> SARZIER · ŒUVRES ORIGINALES</footer>
-
-<script>
-const artworks = [
-  {
-    title: "Espoir d'aujourd'hui",
-    medium: "Peinture acrylique",
-    size: "A4 · 29,7 × 21 cm",
-    image: "images/espoir.jpg"
-  },
-  {
-    title: "Miroir de la Montagne",
-    medium: "Peinture acrylique",
-    size: "A4 · 29,7 × 21 cm",
-    image: "images/miroir.jpg"
-  },
-  {
-    title: "Chuchotement d'automne",
-    medium: "Huile sur carton toilé",
-    size: "44 × 33 cm",
-    image: "images/automne.jpg"
-  }
-];
-
-let current = 0;
-const $ = id => document.getElementById(id);
-
-function showScreen(name) {
-  document.querySelectorAll(".screen").forEach(el =>
-    el.classList.toggle("active", el.id === name)
-  );
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function showArtwork(index) {
-  current = (index + artworks.length) % artworks.length;
-  const art = artworks[current];
-  $("artTitle").textContent = art.title;
-  $("artMedium").textContent = art.medium;
-  $("artSize").textContent = art.size;
-  $("counter").textContent =
-    String(current + 1).padStart(2, "0") + " / " +
-    String(artworks.length).padStart(2, "0");
-
-  const img = $("artImage");
-  img.hidden = true;
-  $("placeholder").hidden = false;
-  img.alt = art.title;
-
-  img.onload = () => {
-    img.hidden = false;
-    $("placeholder").hidden = true;
-  };
-  img.onerror = () => {
-    img.hidden = true;
-    $("placeholder").hidden = false;
-  };
-  img.src = art.image;
-}
-
-$("enter").addEventListener("click", () => {
-  showScreen("gallery");
-  showArtwork(current);
-});
-$("back").addEventListener("click", () => showScreen("home"));
-$("prev").addEventListener("click", () => showArtwork(current - 1));
-$("next").addEventListener("click", () => showArtwork(current + 1));
-
-let startX = 0;
-$("frame").addEventListener("touchstart", e => {
-  startX = e.changedTouches[0].screenX;
-}, { passive: true });
-
-$("frame").addEventListener("touchend", e => {
-  const delta = e.changedTouches[0].screenX - startX;
-  if (Math.abs(delta) > 45) {
-    showArtwork(current + (delta < 0 ? 1 : -1));
-  }
-}, { passive: true });
-
-document.addEventListener("keydown", e => {
-  if (!$("gallery").classList.contains("active")) return;
-  if (e.key === "ArrowRight") showArtwork(current + 1);
-  if (e.key === "ArrowLeft") showArtwork(current - 1);
-});
-
-$("year").textContent = new Date().getFullYear();
-showArtwork(0);
-</script>
-</body>
-  </html>
-  
+      <div class="controls
+      
